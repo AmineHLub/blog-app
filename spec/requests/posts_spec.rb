@@ -17,7 +17,7 @@ RSpec.describe 'POSTS', type: :request do
     end
   end
 
-  describe 'GET POSTS #index' do
+  describe 'GET POSTS #show' do
     before(:example) { get('/users/15/posts/20') }
 
     it 'return 200' do
