@@ -12,7 +12,7 @@
 
 ## Getting Started
 
-- Run git clone https://github.com/ntzwilly/blog-rails-app.git to get a local clone
+- Run git clone https://github.com/AmineHLub/blog-app to get a local clone
 
 ### Prerequisites
 
