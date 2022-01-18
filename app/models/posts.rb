@@ -1,13 +1,12 @@
-class Posts < ApplicationRecord      
-    belongs_to :users
-    has_many :likes, :comments
+class Posts < ApplicationRecord
+  belongs_to :users
+  has_many :likes, :comments
 
-    def update_post_counter
+  def update_post_counter
     users.posts_counter += 1
-    end
+  end
 
-
-    def recent_comments
+  def recent_comments
     comments.last(5)
-    end
+  end
 end
