@@ -8,15 +8,11 @@
   margin: 0 1%;
   border: 1px solid gray;
   border-radius: 8px;
+  padding: 10px;
 }
 
 .posts-details {
-  margin-bottom: 20px;
-  padding: 10px;
-}
-
-.posts-comments {
-  padding: 10px;
+  margin-bottom: 15px;
 }
 
 .posts-counters {
