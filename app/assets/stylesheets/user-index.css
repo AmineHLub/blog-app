@@ -8,8 +8,6 @@ body {
 }
 
 .user-container {
-  height: 150px;
-  width: 90%;
   justify-content: space-around;
   align-items: center;
   padding: 20px 5%;
