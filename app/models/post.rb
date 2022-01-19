@@ -1,6 +1,7 @@
-class Posts < ApplicationRecord
-  belongs_to :users
-  has_many :likes, :comments
+class Post < ApplicationRecord
+  belongs_to :user
+  has_many :likes
+  has_many :comments
 
   def update_post_counter
     users.posts_counter += 1
