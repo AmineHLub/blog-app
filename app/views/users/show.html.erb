@@ -3,32 +3,27 @@
     <%= image_tag("user/user_logo.png", width:'100%', height:'100%') %>
   </div>
   <div class="user-data d-flex">
-    <h2>Username</h2>
-    <p>Number of posts: x</p>
+    <h2><%= @user.name %></h2>
+    <p>
+      <a href="/users/<%=@user.id%>/posts/">Number of posts: <%= @posts.length %></a>
+    </p>
   </div>
 </div>
 
 <div class="bio-data">
   <h2 class="bio-span">Bio</h2>
-  <p class="bio-body">
-    Sunt est eu veniam dolor amet laboris ex ad et dolor ad consequat laborum.
-    Sunt est eu veniam dolor amet laboris ex ad et dolor ad consequat laborum.
-    Sunt est eu veniam dolor amet laboris ex ad et dolor ad consequat laborum.
-    Sunt est eu veniam dolor amet laboris ex ad et dolor ad consequat laborum.
-    Sunt est eu veniam dolor amet laboris ex ad et dolor ad consequat laborum.
-    Sunt est eu veniam dolor amet laboris ex ad et dolor ad consequat laborum.
-    Sunt est eu veniam dolor amet laboris ex ad et dolor ad consequat laborum.
-    Sunt est eu veniam dolor amet laboris ex ad et dolor ad consequat laborum.
-  </p>
+  <p class="bio-body"><%= @user.bio %></p>
 </div>
 
 <div class="recent-posts">
+  <% @posts.each do |post| %>
   <div class="recent-posts posts-details d-flex">
-    <h2>Post #1</h2>
-    <p class="posts-body">
-      Consectetur sunt exercitation voluptate non et labore id consequat do quis esse aute. Nostrud
-      veniam quis nulla veniam elit occaecat veniam. Sit ad ad sint ipsum laborum do.
-    </p>
-    <p class="posts-counters">Comments: x, Likes: y</p>
+    <h2>
+     <a href="/users/<%=@user.id%>/posts/<%=post.id%>"><%= post.title%></a>
+    </h2>
+    <p class="posts-body"><%= post.text %></p>
+    <p class="posts-counters">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
   </div>
+  <%end %>
 </div>
+
