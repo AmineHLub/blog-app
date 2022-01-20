@@ -8,19 +8,23 @@
   </div>
 </section>
 
+<% @posts.each do |post| %>
 <section class="comments-section">
   <div class="posts-container">
     <div class="posts-details d-flex">
-      <h2 class="posts-id">Post #1</h2>
-      <p class="posts-body">Consectetur sunt exercitation voluptate non et labore id consequat do quis esse aute. Nostrud
-      veniam quis nulla veniam elit occaecat veniam. Sit ad ad sint ipsum laborum do.</p>
-      <p class="posts-counters">Comments: x, Likes: y</p>
+      <h2 class="posts-id"><a href="/users/<%= @user.id %>/posts/<%=post.id%>"><%= post.title %></a></h2>
+      <p class="posts-body"><%= post.text %></p>
+      <p class="posts-counters">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
     </div>
+    <% unless post.recent_comments.empty? %>
     <div class="posts-comments d-flex">
-    <p class="users-comment">Username: Comment</p>
-    <p class="users-comment">Username: Comment</p>
-    <p class="users-comment">Username: Comment</p>
-    <p class="users-comment">Username: Comment</p>
+    <% post.recent_comments.each do |comment| %>
+      <p class="users-comment">
+       <%= comment.user.name %>: <%= comment.text %>
+     </p>
+    <% end %>
     </div>
+    <% end %>
   </div>
 </section>
+<%end%>
