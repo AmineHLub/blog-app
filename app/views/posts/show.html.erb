@@ -10,14 +10,16 @@
   </p>
 </section>
 
-<% unless @post.comments.empty? %>
+
 <section class="posts-section-comments d-flex">
+<% unless @post.comments.empty? %>
 <% @post.comments.each do |comment| %>
       <p class="users-comment">
        <%= comment.user.name %>: <%= comment.text %>
      </p>
     <% end %>
+    <% end %>
     <%= render partial: "create_comment", local: @post %>
     </section>
-    <% end %>
+    
 
