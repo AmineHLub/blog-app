@@ -15,8 +15,8 @@
 <% unless @post.comments.empty? %>
 <% @post.comments.each do |comment| %>
       <p class="users-comment">
-       <%= comment.user.name %>: <%= comment.text %>
-     </p>
+      <a href = <%=user_path(comment.user.id)%>><%= comment.user.name %></a>: <%= comment.text %>
+      </p>
     <% end %>
     <% end %>
     <%= render partial: "create_comment", local: @post %>

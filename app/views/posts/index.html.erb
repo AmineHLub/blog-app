@@ -19,8 +19,8 @@
     <div class="posts-comments d-flex">
     <% post.recent_comments.each do |comment| %>
       <p class="users-comment">
-       <%= comment.user.name %>: <%= comment.text %>
-     </p>
+       <a href = <%=user_path(comment.user.id)%>><%= comment.user.name %></a>: <%= comment.text %>
+      </p>
     <% end %>
     </div>
     <% end %>
