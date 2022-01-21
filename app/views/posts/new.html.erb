@@ -1,0 +1,11 @@
+<h1 class ="post-create-header">Create a poste</h1>
+<%= form_with url: post_path, scope: :data do |form| %>
+	<section class="title-section from-input">
+		<%= form.label :title, "Title", class: "label" %>
+		<%= form.text_field :title, placeholder: "Title", required: true, class: "input" %>
+	</section>
+	<section class="body-section from-input">
+		<%= form.text_area :text, placeholder: "Type here...", rows: 14, required: true, class: "textarea has-fixed-size" %>
+	</section>
+	<%= form.submit "Publish", class: "button is-link is-success" %>
+<% end %>
