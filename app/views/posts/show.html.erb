@@ -17,5 +17,7 @@
        <%= comment.user.name %>: <%= comment.text %>
      </p>
     <% end %>
+    <%= render partial: "create_comment", local: @post %>
     </section>
     <% end %>
+

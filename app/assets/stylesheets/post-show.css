@@ -61,11 +61,6 @@
   font-size: 2rem;
 }
 
-.from-input > input:focus,
-.from-input > textarea:focus {
-  outline: none;
-}
-
 .submit-btn {
   cursor: pointer;
   color: white;
@@ -78,4 +73,31 @@
 
 .submit-btn:hover {
   background: rgb(36, 128, 36);
+}
+
+.comment-container {
+  flex-direction: column;
+}
+
+.comment-container > textarea {
+  height: 70px;
+  font-size: 1.2rem;
+  padding: 5px;
+  border-radius: 5px;
+  resize: none;
+}
+
+.comment-btn {
+  margin: 10px 0;
+  align-self: flex-end;
+}
+
+.comment-container > textarea:focus {
+  border: 1.5px solid rgb(32, 100, 146);
+  outline: none;
+}
+
+.from-input > input:focus,
+.from-input > textarea:focus {
+  outline: none;
 }
