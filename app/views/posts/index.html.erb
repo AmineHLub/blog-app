@@ -8,6 +8,10 @@
   </div>
 </section>
 
+<div class="add-post-btn d-flex">
+  <a href ="/users/<%= @user.id %>/posts/new" >Add a new post</a>
+</div>
+
 <% @posts.each do |post| %>
 <section class="comments-section">
   <div class="posts-container">
