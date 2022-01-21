@@ -15,6 +15,7 @@ class PostsController < ApplicationController
     new_post = current_user.posts.new(params.require(:data).permit(:title, :text))
     new_post.likes_counter = 0
     new_post.comments_counter = 0
+    new_post.update_post_counter
     respond_to do |format|
       format.html do
         if new_post.save
