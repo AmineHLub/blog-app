@@ -21,7 +21,7 @@
 }
 
 .like-btn {
-  background: rgb(16, 161, 161);
+  background: rgb(116, 116, 116);
 }
 
 .not-liked {
@@ -29,11 +29,11 @@
 }
 
 .not-liked:hover {
-  background: rgb(10, 104, 104);
+  background: rgb(25, 161, 161);
 }
 
 .liked {
-  background: rgb(194, 14, 14);
+  background: rgb(25, 161, 161);
   cursor: unset;
 }
 
