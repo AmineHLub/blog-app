@@ -21,7 +21,7 @@
 
 ### Run
 
-Run rails db:create db:migrate
+Run rails db:create db:migrate db:seed
 
 P.S : if you are coming from a previous version, you might want to delete the database by running rails db:drop (BECAREFUL that all previous data will be deleted)
 
