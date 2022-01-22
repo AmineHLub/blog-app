@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'POSTS', type: :request do
   describe 'GET POSTS #index' do
-    before(:example) { get('/users/15/posts#index') }
+    before(:example) { get('/users/1/posts#index') }
 
     it 'server return 200 server ok' do
       expect(response).to have_http_status(200)
@@ -12,13 +12,13 @@ RSpec.describe 'POSTS', type: :request do
       expect(response).to render_template(:index)
     end
 
-    it 'shows body content of index' do
-      expect(response.body).to include('<h1>show the posts of a user</h1>')
+    it 'shows body content of index (post title)' do
+      expect(response.body).to include('test title')
     end
   end
 
   describe 'GET POSTS #show' do
-    before(:example) { get('/users/15/posts/20') }
+    before(:example) { get('/users/1/posts/1') }
 
     it 'return 200' do
       expect(response).to have_http_status(:ok)
@@ -28,8 +28,8 @@ RSpec.describe 'POSTS', type: :request do
       expect(response).to render_template(:show)
     end
 
-    it 'shows body content of posts/show' do
-      expect(response.body).to include("<h1>show post's details</h1>")
+    it 'shows body content of posts/show (jhon comment)' do
+      expect(response.body).to include('nice one')
     end
   end
 end

@@ -10,3 +10,7 @@ User.create(name: 'Jhon', photo: 'photo_url', bio: 'I am a developer', posts_cou
 User.create(name: 'Bella', photo: 'photo_url', bio: 'I am a teacher', posts_counter: 0)
 User.create(name: 'Kim', photo: 'photo_url', bio: 'I am a nurse', posts_counter: 0)
 User.create(name: 'Mohamed', photo: 'photo_url', bio: 'I am a technician', posts_counter: 0)
+
+post = Post.create(title: "test title", text: "text test", user_id: 1, comments_counter: 0, likes_counter:0)
+Comment.create(user_id: 1, post: post, text: "nice one")
+Like.create(user_id: 1, post: post)
