@@ -10,7 +10,9 @@ class PostsController < ApplicationController
     @like = current_user.likes.where(post_id: params[:id]).exists?
   end
 
-  def new; end
+  def new
+  @current_user = current_user
+  end
 
   def create
     new_post = current_user.posts.new(params.require(:data).permit(:title, :text))

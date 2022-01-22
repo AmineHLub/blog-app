@@ -68,6 +68,12 @@
   font-size: 2rem;
 }
 
+.title-section > h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: brown;
+}
+
 .from-input > input,
 .from-input > textarea {
   outline: none;
