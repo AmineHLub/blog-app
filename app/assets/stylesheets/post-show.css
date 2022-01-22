@@ -10,6 +10,33 @@
   margin-top: 20px;
 }
 
+.post-stat-btns {
+  height: 35px;
+  width: fit-content;
+  background: rgb(36, 131, 79);
+  color: white;
+  border-radius: 7px;
+  border: none;
+  margin: 0 5px;
+}
+
+.like-btn {
+  background: rgb(16, 161, 161);
+}
+
+.not-liked {
+  cursor: pointer;
+}
+
+.not-liked:hover {
+  background: rgb(10, 104, 104);
+}
+
+.liked {
+  background: rgb(194, 14, 14);
+  cursor: unset;
+}
+
 .post-header {
   align-items: center;
   justify-content: space-between;

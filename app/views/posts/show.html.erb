@@ -1,9 +1,11 @@
 <section class="posts-section">
   <div class="post-header d-flex">
     <h2 class="post-title"><%= @post.title %></h2>
-    <p class="post-data-counter">
-      Comments: <%= @post.comments_counter %>, Likes:<%= @post.likes_counter %>
-    </p>
+    <div class="post-data-counter d-flex">
+    <button class="post-stat-btns unclickble">Comments: <%= @post.comments_counter %></button>
+    <button class="post-stat-btns unclickble">Likes: <%= @post.likes_counter %></button>
+    <%= render partial: "create_like", local: @post %>
+    </div>
   </div>
   <p class="post-data-counter">
     <%= @post.text %>
@@ -19,7 +21,7 @@
       </p>
     <% end %>
     <% end %>
-    <%= render partial: "create_comment", local: @post %>
+    <%= render partial: "create_comment", local: { post: @post, like: @like } %>
     </section>
     
 
