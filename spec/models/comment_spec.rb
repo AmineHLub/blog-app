@@ -6,7 +6,7 @@ RSpec.describe Comment, type: :model do
 
     before { subject.save }
 
-    it 'check if it increases the posts' do
+    it 'check if it increases the comments' do
       prev = Post.find(1).comments_counter
       subject.update_commment_count
       expect(Post.find(1).comments_counter).to eq(prev + 1)
