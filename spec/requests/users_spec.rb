@@ -12,13 +12,13 @@ RSpec.describe 'USERS', type: :request do
       expect(response).to render_template(:index)
     end
 
-    it 'shows body content of index' do
-      expect(response.body).to include('<h1>list of users is here</h1>')
+    it 'shows body content of index (add post button)' do
+      expect(response.body).to include('Add a new post')
     end
   end
 
   describe 'USERS GET #show' do
-    before(:example) { get('/users/156') }
+    before(:example) { get('/users/1') }
 
     it 'return 200' do
       expect(response).to have_http_status(:ok)
@@ -29,7 +29,7 @@ RSpec.describe 'USERS', type: :request do
     end
 
     it 'shows body content of USERS#show' do
-      expect(response.body).to include('<h1>user detail by id</h1>')
+      expect(response.body).to include('Bio')
     end
   end
 end
