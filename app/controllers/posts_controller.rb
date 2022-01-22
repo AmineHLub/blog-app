@@ -11,11 +11,11 @@ class PostsController < ApplicationController
   end
 
   def new
-    @current_user = current_user
+    @post = Post.new
   end
 
   def create
-    new_post = current_user.posts.new(params.require(:data).permit(:title, :text))
+    new_post = current_user.posts.new(post_params)
     new_post.likes_counter = 0
     new_post.comments_counter = 0
     new_post.update_post_counter
@@ -28,5 +28,11 @@ class PostsController < ApplicationController
         end
       end
     end
+  end
+
+  private
+
+  def post_params
+    params.require(:data).permit(:title, :text)
   end
 end

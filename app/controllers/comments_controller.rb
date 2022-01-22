@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     new_comment = current_user.comments.new(
-      text: params.require(:comment).permit(:text)[:text],
+      text: comment_params,
       user_id: current_user.id,
       post_id: @post.id
     )
@@ -12,5 +12,11 @@ class CommentsController < ApplicationController
     else
       render :new, alert: 'Error occured!'
     end
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:text)[:text]
   end
 end
