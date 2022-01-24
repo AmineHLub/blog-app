@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     # write all your routes inside this block
-    #root 'devise/sessions#new'
+    root 'users#index'
     resources :users, only: [:index, :show] do
       resources :posts, only: [:index, :new, :create, :show]
     end
