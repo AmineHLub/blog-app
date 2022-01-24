@@ -25,6 +25,8 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <%= f.hidden_field :posts_counter, :value => 0 %>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
