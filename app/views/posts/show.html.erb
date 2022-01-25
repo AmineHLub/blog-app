@@ -22,7 +22,9 @@
       <p class="users-comment">
       <a href = <%=user_path(comment.user.id)%>><%= comment.user.name %></a>: <%= comment.text %>
       </p>
-      <%=button_to 'delete', post_comment_path(post_id: @post.id ,id: comment.id), :method => :delete%> 
+      <% if can? :destroy, comment %>
+        <%=button_to 'delete', post_comment_path(post_id: @post.id ,id: comment.id), :method => :delete%> 
+      <% end %>
 <% end %>
 <% end %>
 <%= render partial: "create_comment", local: { post: @post, like: @like } %>
