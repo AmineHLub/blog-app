@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
-    @like = current_user.likes.where(post_id: params[:id]).exists?
+    @like = Like.where(user_id: current_user.id, post_id: params[:id]).exists?
   end
 
   def new
