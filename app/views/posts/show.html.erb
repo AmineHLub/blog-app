@@ -7,9 +7,12 @@
     <%= render partial: "create_like", local: @post %>
     </div>
   </div>
+  <div class="detroy-text-container d-flex">
   <p class="post-data-counter">
     <%= @post.text %>
   </p>
+  <%= render partial: "delete_post", local: @post %>
+  </div>
 </section>
 
 
@@ -19,9 +22,12 @@
       <p class="users-comment">
       <a href = <%=user_path(comment.user.id)%>><%= comment.user.name %></a>: <%= comment.text %>
       </p>
-    <% end %>
-    <% end %>
-    <%= render partial: "create_comment", local: { post: @post, like: @like } %>
-    </section>
+      <% if can? :destroy, comment %>
+        <%=button_to 'delete', post_comment_path(post_id: @post.id ,id: comment.id), :method => :delete%> 
+      <% end %>
+<% end %>
+<% end %>
+<%= render partial: "create_comment", local: { post: @post, like: @like } %>
+</section>
     
 
