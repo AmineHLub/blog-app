@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:post_id])
+    @post = Post.includes(:comments).find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     @comment.destroy
     @post.comments_counter -= 1
