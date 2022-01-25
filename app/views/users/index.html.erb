@@ -1,6 +1,7 @@
     <%if user_signed_in?%>
 <%= button_to "Logout", destroy_user_session_path, :method => :delete %>
 
+<p><%= current_user.name%></p>
 <div class="add-post-btn d-flex">
 <%= link_to "Add a new post", new_user_post_path(current_user.id) %>
 </div>

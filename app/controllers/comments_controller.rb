@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     @post.comments_counter -= 1
     @post.save
-    redirect_to("/users/#{current_user.id}")
+    redirect_to("/users/#{current_user.id}/posts/#{@post.id}")
     flash[:success] = 'Comment was deleted!'
   end
 
