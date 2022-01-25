@@ -1,3 +1,1 @@
-<%= button_to "delete",url: "/posts/#{@post.id}", :method => :delete %>
-
 <%=button_to 'Delete', {:controller => :posts, :action => 'destroy', :id => @post.id}, :method => :delete%> 
