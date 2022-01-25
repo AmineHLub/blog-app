@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  root 'users#index'
+  devise_for :users
+
+  devise_scope :user do
+    # write all your routes inside this block
+    root 'users#index'
     resources :users, only: [:index, :show] do
       resources :posts, only: [:index, :new, :create, :show]
     end
@@ -8,4 +12,6 @@ Rails.application.routes.draw do
       resources :comments, only: [:create]
       resources :likes, only: [:create]
     end
+  end
+  
   end

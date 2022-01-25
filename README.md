@@ -27,6 +27,8 @@ P.S : if you are coming from a previous version, you might want to delete the da
 
 Run rails s
 
+To view generated mails, check terminal logs
+
 ### Run tests
 
 Run rspec
@@ -36,6 +38,11 @@ Run rspec
 - GitHub: [@AmineHLub](https://github.com/AmineHLub)
 - Twitter: [@Amino47612441](https://twitter.com/Amino47612441)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/mohamed-amine-hajltaief-b18863163/)
+
+👤 **Cyril Iyadi**
+
+- GitHub: [@see-why](https://github.com/see-why)
+- LinkedIn: [C.Iyadi](https://www.linkedin.com/in/cyril-iyadi-83517270/)
 
 ## 🤝 Contributing
 
