@@ -49,6 +49,11 @@
   margin-top: 20px;
 }
 
+.detroy-text-container {
+  justify-content: space-between;
+  align-items: center;
+}
+
 /* css for post new */
 
 .post-create-header {

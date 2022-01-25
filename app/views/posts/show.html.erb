@@ -7,9 +7,12 @@
     <%= render partial: "create_like", local: @post %>
     </div>
   </div>
+  <div class="detroy-text-container d-flex">
   <p class="post-data-counter">
     <%= @post.text %>
   </p>
+  <%= render partial: "delete_post", local: @post %>
+  </div>
 </section>
 
 
