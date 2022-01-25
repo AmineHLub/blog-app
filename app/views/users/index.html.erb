@@ -2,7 +2,7 @@
 <%= button_to "Logout", destroy_user_session_path, :method => :delete %>
 
 <div class="add-post-btn d-flex">
-
+<%= link_to "Add a new post", new_user_post_path(current_user.id) %>
 </div>
 
 <% @users.each do |user| %>
