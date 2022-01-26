@@ -6,7 +6,7 @@ RSpec.feature 'Post #Index', type: :feature do
     visit new_user_session_path
     @first_user = User.create(name: 'Mark', photo: 'photos_url',
                               bio: 'Stuff about mark',
-                              posts_counter: 0, email: 'mark@gmail.com',
+                              posts_counter: 6, email: 'mark@gmail.com',
                               password: '0123456', confirmed_at: Time.now)
 
     @mark_post = Post.create(title: 'mark post title',
@@ -61,6 +61,12 @@ RSpec.feature 'Post #Index', type: :feature do
   it 'sees the post likes count' do
     visit user_posts_path(@first_user.id)
     expect(page).to have_content("Likes: #{@mark_post.likes_counter}")
+  end
+
+  it 'sees the post likes count' do
+    @first_user.posts_counter = 6
+    visit user_posts_path(@first_user.id)
+    expect(page.has_button?('pagination')).to be true
   end
 
   it 'redirects to the correct post' do
