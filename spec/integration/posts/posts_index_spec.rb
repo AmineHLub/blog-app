@@ -63,8 +63,7 @@ RSpec.feature 'Post #Index', type: :feature do
     expect(page).to have_content("Likes: #{@mark_post.likes_counter}")
   end
 
-  it 'sees the post likes count' do
-    @first_user.posts_counter = 6
+  it 'sees pagination button if there are more than 6 posts' do
     visit user_posts_path(@first_user.id)
     expect(page.has_button?('pagination')).to be true
   end
