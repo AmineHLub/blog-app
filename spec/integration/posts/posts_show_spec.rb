@@ -53,7 +53,6 @@ RSpec.feature 'Post #Index', type: :feature do
     visit user_post_path(@first_user.id, @mark_post.id)
     expect(page).to have_content("#{@first_user.name}: #{@first_comment.text}")
   end
-
 end
 
 # rubocop:enable Metrics/BlockLength
