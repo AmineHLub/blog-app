@@ -2,14 +2,28 @@ require 'rails_helper'
 
 RSpec.describe 'Login page', js: true, type: :feature do
   before(:all) do
-    @first_user = User.create(name: 'John', photo: 'photo_url', bio: 'I am a developer',
-                              confirmed_at: 'Tue, 25 Jan 2022 16:00:49.722478000 UTC +00:00',
-                              posts_counter: 0, email: 'samrock@gmail.com', password: '12345', role: 'admin')
+    @first_user = User.create(name: 'Mark', photo: 'photos_url',
+                              bio: 'Stuff about mark',
+                              posts_counter: 0, email: 'mark@gmail.com',
+                              password: '0123456', confirmed_at: Time.now)
+    @second_user = User.create(name: 'Angela', photo: 'photos_url',
+                               bio: 'Stuff about her',
+                               posts_counter: 0, email: 'angel@gmail.com', password: 'abcdefg', confirmed_at: Time.now)
+    @first_post = Post.create(title: 'My first post', text: 'This is my first post',
+                              user_id: @first_user.id, comments_counter: 0, likes_counter: 0)
+    @second_post = Post.create(title: 'My second post', text: 'This is my second post',
+                               user_id: @first_user.id, comments_counter: 0, likes_counter: 0)
+    @third_post = Post.create(title: 'My third post', text: 'This is my third post',
+                              user_id: @first_user.id, comments_counter: 0, likes_counter: 0)
+    @fourth_post = Post.create(title: 'My fourth post', text: 'This is my fourth post',
+                               user_id: @first_user.id, comments_counter: 0, likes_counter: 0)
+    Comment.create(text: 'This is my first comment', user_id: @second_user.id, post_id: @fourth_post.id)
+    Comment.create(text: 'This is my second comment', user_id: @first_user.id, post_id: @fourth_post.id)
   end
 
   describe 'Login Page requirements' do
     it 'has username and password inputs, and Log in button' do
-      visit user_session_path
+      visit new_user_session_path
       expect(page).to have_field('user_email')
       expect(page).to have_field('user_password')
       expect(page).to have_button('Log in')
@@ -18,7 +32,7 @@ RSpec.describe 'Login page', js: true, type: :feature do
 
   describe 'When the submit button is clicked' do
     it 'submits with out username and password inputs' do
-      visit user_session_path
+      visit new_user_session_path
       fill_in 'user_email', with: ''
       fill_in 'user_password', with: ''
       click_button 'Log in'
@@ -26,7 +40,7 @@ RSpec.describe 'Login page', js: true, type: :feature do
     end
 
     it 'has incorrect username and password' do
-      visit user_session_path
+      visit new_user_session_path
       fill_in 'user_email', with: 'sam@gmail.com'
       fill_in 'user_password', with: '0000'
       click_button 'Log in'
@@ -34,11 +48,11 @@ RSpec.describe 'Login page', js: true, type: :feature do
     end
 
     it 'can log in with correct data' do
-      visit user_session_path
-      fill_in 'user_email', with: 'samrock@gmail.com'
-      fill_in 'user_password', with: '12345'
+      visit new_user_session_path
+      fill_in 'user_email', with: 'angel@gmail.com'
+      fill_in 'user_password', with: 'abcdefg'
       click_button 'Log in'
-      expect(page).to have_content('Signed in successfully.')
+      expect(page).to have_content('Logout')
     end
   end
 end
