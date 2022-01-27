@@ -15,7 +15,7 @@ class Api::V1::CommentsController < Api::V1::ApiController
     if @comment.save
       render json: @comment
     else
-        render json: @comment.errors, status: :bad_request, message: 'Operation failed'
+      render json: @comment.errors, status: :bad_request, message: 'Operation failed'
     end
   end
 
