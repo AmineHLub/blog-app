@@ -31,7 +31,7 @@ To view generated mails, check terminal logs
 
 ### Run tests
 
-Run rspec
+Run rspec spec/integration for integration tests
 
 👤 **Mohamed Amine**
 
