@@ -9,9 +9,10 @@ class Api::V1::PostsController < Api::V1::ApiController
 
   def create
     @post = current_user.posts.new(post_params)
-
+    @post.comments_counter = 0
+    @post.likes_counter = 0
     if @post.save
-      render json: @post, status: 201
+      render json: { status: 201, message: 'Comment created successfully!' }
     else
       render json: { errors: @post.errors }, status: 422
     end
@@ -20,6 +21,6 @@ class Api::V1::PostsController < Api::V1::ApiController
   private
 
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:title, :text)
   end
-end 
+end
