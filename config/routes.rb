@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do 
+      resources :posts, only: [:create, :index] do
+        resources :comments, only: [:create, :index]
+      end
+    end
+  end
+
   devise_for :users
+
+  default_url_options :host => 'localhost'
 
   devise_scope :user do
     # write all your routes inside this block
