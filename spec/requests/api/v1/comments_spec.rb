@@ -1,37 +1,50 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/comments', type: :request do
-
   path '/api/v1/posts/{post_id}/comments' do
-    # You'll want to customize the parameter types...
-    parameter name: 'post_id', in: :path, type: :string, description: 'post_id'
+    parameter name: 'post_id', in: :path, type: :string, description: 'the id for a specific post'
 
-    get('list comments') do
-      response(200, 'successful') do
-        let(:post_id) { '123' }
+    get('list of comments on a single post') do
+      tags 'Comments'
+      response '200', 'name found' do
+        schema type: :object,
+               properties: {
+                 id: { type: :integer },
+                 text: { type: :string },
+                 user_id: { type: :string },
+                 post_id: { type: :string }
+               }
 
-        after do |example|
-          example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
+        let(:post_id) do
+          Post.create(title: 'test title', text: 'text test', user_id: 1, comments_counter: 0, likes_counter: 0).id
         end
+        run_test!
+      end
+
+      response '404', 'post not found' do
+        let(:post_id) { 'invalid post id' }
         run_test!
       end
     end
 
-    post('create comment') do
-      response(200, 'successful') do
-        let(:post_id) { '123' }
+    post('create a comment for a post') do
+      tags 'Comments'
+      consumes 'application/json', 'application/xml'
+      parameter name: :comment, in: :body, schema: {
+        type: :object,
+        properties: {
+          text: { type: :string, example: 'This is a comment' }
+        },
+        required: ['text']
+      }
 
-        after do |example|
-          example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
-        end
+      response '201', 'comment created' do
+        let(:comment) { { text: 'This is a comment' } }
+        run_test!
+      end
+
+      response '422', 'invalid request' do
+        let(:comment) { { text: 'This is a comment' } }
         run_test!
       end
     end
