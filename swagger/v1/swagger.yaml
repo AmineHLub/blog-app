@@ -1,0 +1,59 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/posts/{post_id}/comments":
+    parameters:
+    - name: post_id
+      in: path
+      description: the id for a specific post
+      required: true
+      schema:
+        type: string
+    get:
+      summary: list of comments on a single post
+      tags:
+      - Comments
+      parameters: []
+      responses:
+        '200':
+          description: comments found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                text:
+                  type: string
+                user_id:
+                  type: string
+                post_id:
+                  type: string
+              required:
+              - text
+              - post-id
+          application/xml:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                text:
+                  type: string
+                user_id:
+                  type: string
+                post_id:
+                  type: string
+              required:
+              - text
+              - post-id
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
