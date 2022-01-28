@@ -1,28 +1,35 @@
-require 'rails_helper'
+require 'swagger_helper'
 
-RSpec.describe 'Posts API', type: :request do
-  # initialize test data
-  let!(:new_user) { create :user }
-  let!(:posts) { create :post, user_id: new_user.id }
-  let!(:posts1) { create :post, user_id: new_user.id }
-  let!(:posts2) { create :post, user_id: new_user.id }
-  let!(:posts3) { create :post, user_id: new_user.id }
-  let!(:posts4) { create :post, user_id: new_user.id }
-  let(:posts_id) { posts.first.id }
+RSpec.describe 'api/v1/posts', type: :request do
 
-  # Test suite for GET /todos
-  describe 'GET /posts' do
-    # make HTTP get request before each example
-    before { get '/api/v1/users/1/posts' }
+  path '/api/v1/posts' do
 
-    it 'returns posts for user' do
-      # Note `json` is a custom helper to parse JSON responses
-      expect(json).not_to be_empty
-      expect(json.size).to eq(5)
+    get('list posts') do
+      response(200, 'successful') do
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
     end
 
-    it 'returns status code 200' do
-      expect(response).to have_http_status(200)
+    post('create post') do
+      response(200, 'successful') do
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
     end
   end
 end
